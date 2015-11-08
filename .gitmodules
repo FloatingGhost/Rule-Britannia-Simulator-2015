@@ -1,0 +1,9 @@
+[submodule "hump"]
+	path = hump
+	url = https://github.com/vrld/hump
+[submodule "30log"]
+	path = 30log
+	url = https://github.com/Yonaba/30log.git
+[submodule "yaoui"]
+	path = yaoui
+	url = https://github.com/adonaac/yaoui.git
