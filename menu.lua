@@ -1,5 +1,4 @@
 require 'TEsound'
-empireselect = require 'empire_select'
 
 local menu = {} -- public interface
 local audiodir = "assets/"

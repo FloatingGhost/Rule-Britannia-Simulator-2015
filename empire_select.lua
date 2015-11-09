@@ -10,22 +10,22 @@ local anthemdir = audiodir .. "anthems/"
 
 local bg = image(imagedir .. "union_flag.jpg")
 
-local names = {"Britain", "France", "Spain", "Portugal", "Netherlands"}
-local bg_flegs = {image(flegdir .. "union_flag_bg.jpg"), 
+names = {"Britain", "France", "Spain", "Portugal", "Netherlands"}
+bg_flegs = {image(flegdir .. "union_flag_bg.jpg"), 
                   image(flegdir .."france_bg.png"),
                   image(flegdir .. "spain_bg.png"), image(flegdir.."portugal_bg.png"),
                   image(flegdir.."holland_bg.png")}
 
-local sm_flegs = {image(flegdir.."union_flag_sm.jpg"), image(flegdir.."france_sm.png"),
+sm_flegs = {image(flegdir.."union_flag_sm.jpg"), image(flegdir.."france_sm.png"),
                   image(flegdir.."spain_sm.png"), image(flegdir.."portugal_sm.png"),
                   image(flegdir.."holland_sm.png")}
 
 local backing = image(flegdir .. "flag_backing.png")
 
-local anthems = {"British-Grenadiers.mp3", "France.mp3", "Spain.mp3", "Portugal.mp3",
+anthems = {"British-Grenadiers.mp3", "France.mp3", "Spain.mp3", "Portugal.mp3",
                 "Netherlands.mp3"}
-
-local selected = 1
+local playbutton = image(imagedir .. "play-button.png")
+selected = 1
 local last_sel = 1
 
 
@@ -47,6 +47,7 @@ function empire_select:draw()
     draw(sm_flegs[i], 200*(i-1) + 65, 335)
     love.graphics.print(names[i], 200*(i-1) + 75, 440)
   end
+  draw(playbutton, 500, 550)
 end
 
 
@@ -59,6 +60,11 @@ function empire_select:mousereleased(x, y, button)
       last_sel = selected
     end
   end  
+  
+  if button_clicked(love.mouse.getX(), love.mouse.getY(), 500, 500) then
+    TEsound.stop("theme")
+    Gamestate.switch(gamescreen)
+  end 
 end
 
 function empire_select:keypressed(key, isrepeat)
@@ -75,7 +81,7 @@ function empire_select:keypressed(key, isrepeat)
       TEsound.stop("theme")
       TEsound.playLooping(anthemdir .. anthems[selected], "theme")
       last_sel = selected
- end 
+ end
 end  
 
 

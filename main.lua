@@ -2,8 +2,9 @@ Gamestate = require 'hump.gamestate'
 yui       = require 'yui'
 
 --Load gamestates
-local menu = require 'menu'
-local empire_select = require 'empire_select'
+menu = require 'menu'
+empireselect = require 'empire_select'
+gamescreen = require 'gamescreen'
 
 function love.load()
   Gamestate.registerEvents()
